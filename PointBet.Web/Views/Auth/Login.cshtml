@@ -1,0 +1,86 @@
+﻿@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Kısmet </title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- fontawesome icon  -->
+    <link rel="stylesheet" href="~/assets/css/fontawesome.min.css">
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="~/assets/fonts/flaticon.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/odometer.min.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/register-page-responsive.css">
+</head>
+
+<body>
+    <!-- login begin -->
+    <div class="login">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-6 col-md-8">
+                    <div class="section-title">
+                        <h2>HOŞGELDİNİZ!</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div class="login-form">
+                        <form asp-action="Login" method="post">
+                            <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+                            <input type="text" placeholder="Kullanıcı adı" name="username">
+                            <input type="password" placeholder="Şifre" name="password">
+                            <button type="submit">GİRİŞ</button>
+                        </form>
+                        @if (ViewBag.Message != string.Empty)
+                        {
+                            <br />
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Message
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login end -->
+    <!-- jquery -->
+    <!-- <script src="~/assets/js/jquery.js"></script> -->
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <!-- owl carousel -->
+    <script src="~/assets/js/owl.carousel.js"></script>
+    <!-- magnific popup -->
+    <script src="~/assets/js/jquery.magnific-popup.js"></script>
+    <!-- filterizr js -->
+    <script src="~/assets/js/jquery.filterizr.min.js"></script>
+    <!-- wow js-->
+    <script src="~/assets/js/wow.min.js"></script>
+    <!-- clock js -->
+    <script src="~/assets/js/clock.min.js"></script>
+    <script src="~/assets/js/jquery.appear.min.js"></script>
+    <script src="~/assets/js/odometer.min.js"></script>
+    <!-- main -->
+    <script src="~/assets/js/main.js"></script>
+</body>
+</html>

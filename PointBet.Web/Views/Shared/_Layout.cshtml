@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PerediOn - eSports Prediction HTML Template</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- fontawesome icon  -->
+    <link rel="stylesheet" href="~/assets/css/fontawesome.min.css">
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="~/assets/fonts/flaticon.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/odometer.min.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img src="~/assets/img/preloader.gif" alt="">
+        <span>LOADING</span>
+    </div>
+    <!-- preloader end -->
+    
+    <!-- bet modal begin -->
+    <div class="bet-modal-bg">
+        <div class="bet-modal">
+            <div class="bet-header">
+                <span class="title">Predict a game</span>
+                <button class="cls-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="bet-body">
+                <div class="place-of-bet">
+                    <span class="place-of-bet-title">real madrid</span>
+                    <input class="place-of-bet-number" type="number" value="1" readonly>
+                </div>
+                <div class="bet-descr">
+                    <span class="team-name team-name-1st">america</span>
+                    <span class="img-ic"><img src="assets/img/vs-icon.png" alt=""></span>
+                    <span class="team-name team-name-2nd">iran</span>
+                    <div class="team-score">[<span class="team-first-score">1</span>:<span class="team-second-score">1</span>] 1X2 Live Prediction</div>
+                </div>
+                <div class="ctrl-buttons">
+                    <div class="butto-shadow">
+                        <button class="ctrl-button-for-number minus-number">-</button>
+                        <input type="number" value="1" max="99" min="1" class="number-of-stake" placeholder="stake">
+                        <button class="ctrl-button-for-number plus-number">+</button>
+                    </div>
+                </div>
+                <div class="bet-total">
+                    <ul>
+                        <li>
+                            <span class="number-of-stake-title">stake :</span>
+                            <input class="number-of-stake-count" type="number" value="1" readonly>
+                        </li>
+                        <li>
+                            <span class="number-of-bet">Total Est. Returns :</span>
+                            <span class="number-of-bet-count">82</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bet-footer">
+                <button>Predict Now</button>
+            </div>
+        </div>
+    </div>
+    <!-- bet modal end -->
+
+    <partial name="_Menu" />
+
+    @RenderBody()
+
+    <!-- jquery -->
+    <!-- <script src="assets/js/jquery.js"></script> -->
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <!-- owl carousel -->
+    <script src="~/assets/js/owl.carousel.js"></script>
+    <!-- magnific popup -->
+    <script src="~/assets/js/jquery.magnific-popup.js"></script>
+    <!-- filterizr js -->
+    <script src="~/assets/js/jquery.filterizr.min.js"></script>
+    <!-- wow js-->
+    <script src="~/assets/js/wow.min.js"></script>
+    <!-- clock js -->
+    <script src="~/assets/js/clock.min.js"></script>
+    <script src="~/assets/js/jquery.appear.min.js"></script>
+    <script src="~/assets/js/odometer.min.js"></script>
+    <script src="~/assets/js/oddometer-active.js"></script>
+    <!-- main -->
+    <script src="~/assets/js/main.js"></script>
+
+</body>
