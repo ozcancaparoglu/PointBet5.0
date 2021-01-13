@@ -10,8 +10,8 @@ using PointBet.Data.Context;
 namespace PointBet.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210113132419_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20210114190856_firstmigrate")]
+    partial class firstmigrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

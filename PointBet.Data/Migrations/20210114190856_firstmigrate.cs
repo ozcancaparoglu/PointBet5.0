@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PointBet.Data.Migrations
 {
-    public partial class InitialDatabase : Migration
+    public partial class firstmigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

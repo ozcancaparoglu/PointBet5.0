@@ -26,7 +26,7 @@ namespace PointBet.Web.Controllers
             //var k = await apiSportService.GetCountries();
             //var l = await apiSportService.GetSeasons();
 
-            //var m = await apiDbService.InsertCountries();
+            var m = await apiDbService.InsertCountries();
             var o = await apiDbService.InsertSeasons();
             return View();
         }

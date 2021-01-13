@@ -55,14 +55,16 @@ namespace PointBet.Services.ApiServices
         {
             try
             {
-                List<SeasonApiResponse> models = await apiSportService.GetSeasons();
+                bool isTruncated = await leagueService.TruncateLeaguesTable();
 
-                models.ForEach(x => x.Seasons.FirstOrDefault().CustomApiId = x.League.ApiId);
-
-                bool isTruncated = await seasonService.TruncateSeasonsTable();
+                isTruncated = await seasonService.TruncateSeasonsTable();
 
                 if (!isTruncated)
                     return false;
+
+                List<SeasonApiResponse> models = await apiSportService.GetSeasons();
+
+                models.ForEach(x => x.Seasons.FirstOrDefault().CustomApiId = x.League.ApiId);
 
                 List<SeasonModel> seasons = models.Select(x => x.Seasons.FirstOrDefault()).ToList();
 
@@ -80,16 +82,19 @@ namespace PointBet.Services.ApiServices
                     }
                     catch { continue; }
                 }
+
+                var leaguesModel = new List<LeagueModel>();
+
                 foreach (var country in countryEntities)
                 {
                     try
                     {
-                        models.FirstOrDefault(x => x.Country.Code == country.Code).League.CountryId = country.Id;
+                        var leagueCountries = models.Where(x => x.Country.Code == country.Code).ToList();
+                        leagueCountries.ForEach(x => x.League.CountryId = country.Id);
+                        leaguesModel.AddRange(leagueCountries.Select(x => x.League));
                     }
                     catch { continue; }
                 }
-                
-                List<LeagueModel> leaguesModel = models.Select(x => x.League).ToList();
 
                 leagueService.InsertLeagues(leaguesModel);
 
