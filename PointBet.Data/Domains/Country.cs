@@ -9,7 +9,6 @@ namespace PointBet.Data.Domains
         [StringLength(100)]
         public string Name { get; set; }
 
-        [Required]
         [StringLength(2)]
         public string Code { get; set; }
 

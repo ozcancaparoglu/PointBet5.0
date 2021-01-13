@@ -7,6 +7,6 @@ namespace PointBet.Services.ApiServices
     public interface IApiSportService
     {
         Task<List<CountryModel>> GetCountries();
-        Task<List<SeasonModel>> GetSeasons();
+        Task<List<SeasonApiResponse>> GetSeasons();
     }
 }

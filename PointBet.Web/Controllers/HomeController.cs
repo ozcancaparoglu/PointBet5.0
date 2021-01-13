@@ -10,16 +10,24 @@ namespace PointBet.Web.Controllers
     public class HomeController : BaseController
     {
         private readonly IApiSportService apiSportService;
+        private readonly IApiDbService apiDbService;
 
-        public HomeController(IBaseFactory baseFactory, IApiSportService apiSportService) : base(baseFactory)
+        public HomeController(IBaseFactory baseFactory, 
+            IApiSportService apiSportService, 
+            IApiDbService apiDbService) : base(baseFactory)
         {
             this.apiSportService = apiSportService;
+            this.apiDbService = apiDbService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var k = await apiSportService.GetCountries();
-            var l = await apiSportService.GetSeasons();
+
+            //var k = await apiSportService.GetCountries();
+            //var l = await apiSportService.GetSeasons();
+
+            //var m = await apiDbService.InsertCountries();
+            var o = await apiDbService.InsertSeasons();
             return View();
         }
     }

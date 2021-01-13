@@ -13,7 +13,6 @@ namespace PointBet.Data.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [Required]
         [StringLength(2)]
         [JsonProperty("code")]
         public string Code { get; set; }

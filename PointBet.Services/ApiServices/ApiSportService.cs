@@ -36,11 +36,13 @@ namespace PointBet.Services.ApiServices
             return obj.Countries;
         }
 
-        public async Task<List<SeasonModel>> GetSeasons()
+        public async Task<List<SeasonApiResponse>> GetSeasons()
         {
             var response = await restClientHelper.GetAsync($"{apiUrl}/leagues?season=2019", apiHeaders);
-
-            return new List<SeasonModel>();
+            
+            var obj = JsonConvert.DeserializeObject<SeasonApiModel>(response);
+            
+            return obj.Response;
         }
 
     }

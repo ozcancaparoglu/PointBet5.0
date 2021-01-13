@@ -12,12 +12,9 @@ namespace Common.Cache
         private readonly IMemoryCache memoryCache;
         private readonly IDistributedCache redisCache;
 
-        public CacheManager(IMemoryCache memoryCache)
+        public CacheManager(IDistributedCache redisCache, IMemoryCache memoryCache)
         {
             this.memoryCache = memoryCache;
-        }
-        public CacheManager(IDistributedCache redisCache)
-        {
             this.redisCache = redisCache;
         }
 

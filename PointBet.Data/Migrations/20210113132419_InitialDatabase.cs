@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PointBet.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace PointBet.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: true),
                     Flag = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -36,6 +36,7 @@ namespace PointBet.Data.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Current = table.Column<bool>(type: "bit", nullable: false),
+                    CustomApiId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     State = table.Column<int>(type: "int", nullable: true),
@@ -70,6 +71,7 @@ namespace PointBet.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CountryId = table.Column<int>(type: "int", nullable: true),
+                    ApiId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     City = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),

@@ -50,6 +50,11 @@ namespace PointBet.Web
 
             services.AddOptions();
 
+            services.AddDistributedRedisCache(option => {
+                option.Configuration = Configuration["RedisConfiguration:Host"];
+                option.InstanceName = Configuration["RedisConfiguration:RedisDB"];
+            });
+
             services.Configure<ApiSportSection>(Configuration.GetSection("ApiSportSection"));
 
             services.AddMemoryCache();

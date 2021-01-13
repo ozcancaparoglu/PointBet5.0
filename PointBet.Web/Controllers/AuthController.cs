@@ -26,6 +26,8 @@ namespace PointBet.Web.Controllers
         [Route("login")]
         public IActionResult Login(string ReturnUrl = null)
         {
+            //userService.CreateUser("occanc", "occanc", 1);
+            //userService.CreateUser("haktemur", "haktemur", 1);
             ViewBag.ReturnUrl = ReturnUrl;
             ViewBag.Message = string.Empty;
             return View();

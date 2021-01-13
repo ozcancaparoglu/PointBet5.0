@@ -27,7 +27,6 @@ namespace PointBet.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
@@ -119,6 +118,9 @@ namespace PointBet.Data.Migrations
 
                     b.Property<bool>("Current")
                         .HasColumnType("bit");
+
+                    b.Property<int>("CustomApiId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
@@ -409,6 +411,9 @@ namespace PointBet.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("ApiId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");

@@ -15,6 +15,7 @@ namespace DataAccessLayer.Repositories
         void BulkInsert(List<T> entities);
         void BulkInsertOrUpdate(List<T> entities);
         void BulkUpdate(List<T> entities);
+        bool ClearTable(List<T> entities);
         int Count();
         Task<int> CountAsync();
         int Delete(T entity);

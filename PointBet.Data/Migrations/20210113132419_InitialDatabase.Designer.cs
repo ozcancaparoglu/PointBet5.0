@@ -10,8 +10,8 @@ using PointBet.Data.Context;
 namespace PointBet.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210111114203_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210113132419_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,6 @@ namespace PointBet.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
@@ -121,6 +120,9 @@ namespace PointBet.Data.Migrations
 
                     b.Property<bool>("Current")
                         .HasColumnType("bit");
+
+                    b.Property<int>("CustomApiId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
@@ -411,6 +413,9 @@ namespace PointBet.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("ApiId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");

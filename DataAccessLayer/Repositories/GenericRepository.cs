@@ -118,21 +118,40 @@ namespace DataAccessLayer.Repositories
         public virtual void BulkUpdate(List<T> entities)
         {
             context.BulkUpdate(entities);
+            unitOfWork.Commit();
         }
 
         public virtual void BulkInsertOrUpdate(List<T> entities)
         {
             context.BulkInsertOrUpdate(entities);
+            unitOfWork.Commit();
         }
 
         public virtual void BulkInsert(List<T> entities)
         {
             context.BulkInsert(entities);
+            unitOfWork.Commit();
         }
 
         public virtual void BulkDelete(List<T> entities)
         {
             context.BulkDelete(entities);
+            unitOfWork.Commit();
+        }
+
+        public virtual bool ClearTable(List<T> entities)
+        {
+            try
+            {
+                context.Truncate(typeof(T));
+                return true;
+            }
+            catch
+            {
+                BulkDelete(entities);
+                return false;
+            }
+           
         }
 
         public virtual int Delete(T entity)

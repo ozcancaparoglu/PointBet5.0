@@ -12,5 +12,7 @@ namespace PointBet.Data.Domains
         public DateTime? EndDate { get; set; }
 
         public bool Current { get; set; }
+
+        public int CustomApiId { get; set; }
     }
 }
