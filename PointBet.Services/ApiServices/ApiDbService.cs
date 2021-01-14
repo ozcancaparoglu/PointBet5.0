@@ -2,6 +2,8 @@
 using PointBet.Services.CountryServices;
 using PointBet.Services.LeagueServices;
 using PointBet.Services.SeasonServices;
+using PointBet.Services.TeamServices;
+using PointBet.Services.VenueServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +18,23 @@ namespace PointBet.Services.ApiServices
         private readonly ISeasonService seasonService;
         private readonly ICountryService countryService;
         private readonly ILeagueService leagueService;
+        private readonly ITeamService teamService;
+        private readonly IVenueService venueService;
 
         public ApiDbService(IApiSportService apiSportService,
             ICountryService countryService,
             ISeasonService seasonService,
-            ILeagueService leagueService)
+            ILeagueService leagueService,
+            ITeamService teamService,
+            IVenueService venueService)
         {
             this.apiSportService = apiSportService;
 
             this.seasonService = seasonService;
             this.countryService = countryService;
             this.leagueService = leagueService;
-
+            this.teamService = teamService;
+            this.venueService = venueService;
         }
 
         public async Task<bool> InsertCountries()
@@ -51,7 +58,7 @@ namespace PointBet.Services.ApiServices
             }
         }
 
-        public async Task<bool> InsertSeasons()
+        public async Task<bool> InsertSeasons(int currentSeason)
         {
             try
             {
@@ -62,7 +69,7 @@ namespace PointBet.Services.ApiServices
                 if (!isTruncated)
                     return false;
 
-                List<SeasonApiResponse> models = await apiSportService.GetSeasons();
+                List<SeasonApiResponse> models = await apiSportService.GetSeasons(currentSeason);
 
                 models.ForEach(x => x.Seasons.FirstOrDefault().CustomApiId = x.League.ApiId);
 
@@ -105,6 +112,35 @@ namespace PointBet.Services.ApiServices
                 //TODO: Log
                 return false;
             }
+        }
+
+        public async Task<bool> InsertTeams(int leagueId, int currentSeason)
+        {
+            int? countryId = leagueService.GetLeagueWithApiId(leagueId).Result.CountryId;
+
+            List<TeamApiResponse> models = await apiSportService.GetTeams(leagueId, currentSeason);
+
+            models.ForEach(x => { x.Venue.CustomApiId = x.Team.ApiId; x.Venue.CountryId = countryId; x.Team.LeagueId = leagueId; });
+
+            List<VenueModel> venues = models.Select(x => x.Venue).ToList();
+
+            //TODO: Delete records with teamIds
+            venueService.InsertVenues(venues);
+
+            var venueEntities = await venueService.GetAllVenues();
+
+            foreach (var venue in venueEntities)
+            {
+                models.FirstOrDefault(x => x.Team.ApiId == venue.CustomApiId).Team.VenueId = venue.Id;
+            }
+
+            //TODO: Do not truncate table just delete league teams
+            var teams = models.Select(x => x.Team).ToList();
+
+            teamService.InsertTeams(teams);
+
+            return true;
+
         }
     }
 }

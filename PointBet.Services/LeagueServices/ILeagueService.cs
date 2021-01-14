@@ -7,6 +7,7 @@ namespace PointBet.Services.LeagueServices
     public interface ILeagueService
     {
         Task<ICollection<LeagueModel>> GetAllLeagues();
+        Task<LeagueModel> GetLeagueWithApiId(int apiId);
         bool InsertLeagues(ICollection<LeagueModel> models);
         Task<bool> TruncateLeaguesTable();
     }

@@ -29,21 +29,29 @@ namespace PointBet.Services.ApiServices
 
         public async Task<List<CountryModel>> GetCountries()
         {
-            var response = await restClientHelper.GetAsync($"{apiUrl}/countries", apiHeaders);
-            
-            var obj = JsonConvert.DeserializeObject<CountryApiModel>(response);
+            string response = await restClientHelper.GetAsync($"{apiUrl}/countries", apiHeaders);
+
+            CountryApiModel obj = JsonConvert.DeserializeObject<CountryApiModel>(response);
 
             return obj.Countries;
         }
 
-        public async Task<List<SeasonApiResponse>> GetSeasons()
+        public async Task<List<SeasonApiResponse>> GetSeasons(int currentSeason)
         {
-            var response = await restClientHelper.GetAsync($"{apiUrl}/leagues?season=2019", apiHeaders);
-            
-            var obj = JsonConvert.DeserializeObject<SeasonApiModel>(response);
-            
+            string response = await restClientHelper.GetAsync($"{apiUrl}/leagues?season={currentSeason}", apiHeaders);
+
+            SeasonApiModel obj = JsonConvert.DeserializeObject<SeasonApiModel>(response);
+
             return obj.Response;
         }
 
+        public async Task<List<TeamApiResponse>> GetTeams(int leagueId, int currentSeason)
+        {
+            string response = await restClientHelper.GetAsync($"{apiUrl}/teams?league={leagueId}&season={currentSeason}", apiHeaders);
+
+            TeamApiModel obj = JsonConvert.DeserializeObject<TeamApiModel>(response);
+
+            return obj.Response;
+        }
     }
 }
