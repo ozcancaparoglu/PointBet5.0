@@ -12,8 +12,8 @@ namespace PointBet.Web.Controllers
         private readonly IApiSportService apiSportService;
         private readonly IApiDbService apiDbService;
 
-        public HomeController(IBaseFactory baseFactory, 
-            IApiSportService apiSportService, 
+        public HomeController(IBaseFactory baseFactory,
+            IApiSportService apiSportService,
             IApiDbService apiDbService) : base(baseFactory)
         {
             this.apiSportService = apiSportService;

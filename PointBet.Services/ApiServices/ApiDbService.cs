@@ -69,6 +69,10 @@ namespace PointBet.Services.ApiServices
                 if (!isTruncated)
                     return false;
 
+                List<SeasonApiResponse> models = await apiSportService.GetSeasons(currentSeason);
+
+                models.ForEach(x => x.Seasons.FirstOrDefault().CustomApiId = x.League.ApiId);
+
                 List<SeasonModel> seasons = models.Select(x => x.Seasons.FirstOrDefault()).ToList();
 
                 seasonService.InsertSeasons(seasons);
