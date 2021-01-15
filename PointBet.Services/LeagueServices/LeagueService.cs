@@ -83,5 +83,12 @@ namespace PointBet.Services.LeagueServices
                 return false;
             }
         }
+
+        public async Task<LeagueModel> GetLeagueWithApiId(int apiId)
+        {
+            var entity = await leagueRepo.FindAsync(x => x.ApiId == apiId);
+
+            return autoMapper.MapObject<League, LeagueModel>(entity);
+        }
     }
 }

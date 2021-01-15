@@ -32,6 +32,8 @@ namespace PointBet.Data.Domains
 
         [StringLength(200)]
         public string Image { get; set; }
-        
+
+        public int CustomApiId { get; set; }
+
     }
 }

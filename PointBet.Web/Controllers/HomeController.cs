@@ -22,12 +22,10 @@ namespace PointBet.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+            //var m = await apiDbService.InsertCountries();
+            //var o = await apiDbService.InsertSeasons(2019);
+            var t = await apiDbService.InsertTeams(203, 2019);
 
-            //var k = await apiSportService.GetCountries();
-            //var l = await apiSportService.GetSeasons();
-
-            var m = await apiDbService.InsertCountries();
-            var o = await apiDbService.InsertSeasons();
             return View();
         }
     }
