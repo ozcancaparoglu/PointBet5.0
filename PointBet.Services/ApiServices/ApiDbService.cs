@@ -4,6 +4,7 @@ using PointBet.Services.LeagueServices;
 using PointBet.Services.SeasonServices;
 using PointBet.Services.TeamServices;
 using PointBet.Services.VenueServices;
+using PointBet.Services.OddServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,16 @@ namespace PointBet.Services.ApiServices
         private readonly ILeagueService leagueService;
         private readonly ITeamService teamService;
         private readonly IVenueService venueService;
-
+        private readonly IBookMakersService bookMakersService;
+        private readonly IBetsService betsService;
         public ApiDbService(IApiSportService apiSportService,
             ICountryService countryService,
             ISeasonService seasonService,
             ILeagueService leagueService,
             ITeamService teamService,
-            IVenueService venueService)
+            IVenueService venueService,
+            IBookMakersService bookMakersService,
+            IBetsService betsService)
         {
             this.apiSportService = apiSportService;
 
@@ -35,6 +39,8 @@ namespace PointBet.Services.ApiServices
             this.leagueService = leagueService;
             this.teamService = teamService;
             this.venueService = venueService;
+            this.bookMakersService = bookMakersService;
+            this.betsService = betsService;
         }
 
         public async Task<bool> InsertCountries()
@@ -141,6 +147,33 @@ namespace PointBet.Services.ApiServices
 
             return true;
 
+        }
+        public async Task<bool> InsertBookMakers()
+        {
+            bool isTruncated = await bookMakersService.TruncateBookMakersTable();
+
+            //if (!isTruncated)
+            //    return false;
+
+            List<BookMakersModel> models = await apiSportService.GetBookmakers();
+
+            bookMakersService.InsertBookMakers(models);
+
+            return true;
+        }
+
+        public async Task<bool> InsertBets()
+        {
+            bool isTruncated = await betsService.TruncateBetsTable();
+
+            //if (!isTruncated)
+            //    return false;
+
+            List<BetsModel> models = await apiSportService.GetBets();
+
+            betsService.InsertBets(models);
+
+            return true;
         }
     }
 }

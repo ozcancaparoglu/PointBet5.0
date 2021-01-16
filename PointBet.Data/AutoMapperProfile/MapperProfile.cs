@@ -18,6 +18,8 @@ namespace PointBet.Data.AutoMapperProfile
             CreateMap<User, UserModel>().MaxDepth(depth).ReverseMap();
             CreateMap<UserRole, UserRoleModel>().MaxDepth(depth).ReverseMap();
             CreateMap<Venue, VenueModel>().MaxDepth(depth).ReverseMap();
+            CreateMap<BookMakers, BookMakersModel>().MaxDepth(depth).ReverseMap();
+            CreateMap<Bets, BetsModel>().MaxDepth(depth).ReverseMap();
         }
     }
 }

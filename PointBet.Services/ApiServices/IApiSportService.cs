@@ -9,5 +9,10 @@ namespace PointBet.Services.ApiServices
         Task<List<CountryModel>> GetCountries();
         Task<List<SeasonApiResponse>> GetSeasons(int currentSeason);
         Task<List<TeamApiResponse>> GetTeams(int leagueId, int currentSeason);
+        Task<List<VenueModel>> GetVenues(string name, string city, string country, string search,int? id);
+        Task<StandingsApiModel> GetStandings(int leagueid, int season, int? team);
+        Task<List<BookMakersModel>> GetBookmakers();
+        Task<List<BetsModel>> GetBets();
+        Task<List<MappingModel>> GetMapping(int page = 1);
     }
 }

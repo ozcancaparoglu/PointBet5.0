@@ -48,6 +48,8 @@ namespace PointBet.Data.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Venue> Venues { get; set; }
+        public DbSet<BookMakers> BookMakers { get; set; }
+        public DbSet<Bets> Bets { get; set; }
 
         #endregion
 

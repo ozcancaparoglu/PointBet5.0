@@ -31,5 +31,17 @@
         /// </summary>
         public const string Venues = "venues";
         public const int VenuesCacheTime = 1440;
+
+        /// <summary>
+        /// All BookMakers
+        /// </summary>
+        public const string BookMakers = "bookmakers";
+        public const int BookMakersTime = 1440;
+
+        /// <summary>
+        /// All BookMakers
+        /// </summary>
+        public const string Bets = "bets";
+        public const int BetsTime = 1440;
     }
 }

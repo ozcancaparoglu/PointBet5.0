@@ -1,6 +1,8 @@
 ﻿using Common.Entities;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using PointBet.Data.Models.ApiCommon;
 
 namespace PointBet.Data.Models
 {
@@ -28,6 +30,11 @@ namespace PointBet.Data.Models
         [JsonProperty("city")]
         public string City { get; set; }
 
+        [Required]
+        [StringLength(25)]
+        [JsonProperty("country")]
+        public string CountryName { get; set; }
+
         [JsonProperty("capacity")]
         public int Capacity { get; set; }
 
@@ -40,5 +47,11 @@ namespace PointBet.Data.Models
         public string Image { get; set; }
 
         public int CustomApiId { get; set; }
+    }
+
+    public class VenueApiModel : ApiBaseModel
+    {
+        [JsonProperty("response")]
+        public List<VenueModel> Venues { get; set; }
     }
 }
