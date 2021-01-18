@@ -14,5 +14,7 @@ namespace PointBet.Services.ApiServices
         Task<List<BookMakersModel>> GetBookmakers();
         Task<List<BetsModel>> GetBets();
         Task<List<MappingModel>> GetMapping(int page = 1);
+        Task<List<string>> GetRounds(int league,int season,bool current);
+        Task<List<FixturesModel>> GetFixtures(int? id,string live,string date,int?  league, int? season, int? team,string round,string status);
     }
 }

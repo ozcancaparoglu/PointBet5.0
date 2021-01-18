@@ -9,5 +9,6 @@ namespace PointBet.Services.ApiServices
         Task<bool> InsertTeams(int leagueId, int currentSeason);
         Task<bool> InsertBookMakers();
         Task<bool> InsertBets();
+        //Task<bool> InsertFixtures();
     }
 }

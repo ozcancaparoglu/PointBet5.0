@@ -30,6 +30,8 @@ namespace PointBet.Web.Controllers
             //var b = await apiDbService.InsertBookMakers();
             //var bet = await apiDbService.InsertBets();
             //var m = await apiSportService.GetMapping();
+            //var r = await apiSportService.GetRounds(203, 2020, true);
+            var f = await apiSportService.GetFixtures(null, "", "", 203, 2020, null, "", "");
             return View();
         }
     }

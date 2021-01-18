@@ -96,5 +96,37 @@ namespace PointBet.Services.ApiServices
             MappingApiModel obj = JsonConvert.DeserializeObject<MappingApiModel>(response);
             return obj.Mapping;
         }
+
+        public async Task<List<string>> GetRounds(int league, int season, bool current)
+        {
+            string _current = current ? "true" : "false";
+            string response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/rounds?league={league}&season={season}&current={_current}", apiHeaders);
+            RoundsModel obj = JsonConvert.DeserializeObject<RoundsModel>(response);
+            return obj.Response;
+        }
+
+        public async Task<List<FixturesModel>> GetFixtures(int? id, string live, string date, int? league,int? season,int? team, string round, string status)
+        {
+            string response = string.Empty;
+           
+            if(id != null)
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?id={id}", apiHeaders);
+            else if(!string.IsNullOrEmpty(live)) // "all" "id-id"
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?live={live}", apiHeaders);
+            else if(!string.IsNullOrEmpty(date)) // YYYY-MM-DD
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?date={date}", apiHeaders);
+            else if(league != null && league>0 && season > 0)
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?league={league}&season={season}", apiHeaders);
+            else if (team != null && team > 0 && season > 0)
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?team={team}&season={season}", apiHeaders);
+            else if (!string.IsNullOrEmpty(round)) 
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?round={round}", apiHeaders);
+            else if (!string.IsNullOrEmpty(status) && league > 0 && season > 0)
+                response = await restClientHelper.GetAsync($"{apiUrl}/fixtures/?status={status}&league={league}&season={season}", apiHeaders);
+
+
+            FixturesApiModel obj = JsonConvert.DeserializeObject<FixturesApiModel>(response);
+            return obj.Fixtures;
+        }
     }
 }
