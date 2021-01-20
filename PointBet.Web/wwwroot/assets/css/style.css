@@ -5597,6 +5597,20 @@ ul {
     }
 }
 
+.login-bg {
+    background-image: url('/assets/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media  only screen and (max-width: 768px){
+    .login-bg {
+        background-image: url('/assets/img/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height:800px;
+    }
+}
+
 .login {
     padding: 120px 0;
 }
